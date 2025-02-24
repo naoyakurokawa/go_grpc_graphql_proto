@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  proto:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.local
+    ports:
+      - 8082:8082
+    volumes:
+      - ./:/go/src/app
+    tty: true
