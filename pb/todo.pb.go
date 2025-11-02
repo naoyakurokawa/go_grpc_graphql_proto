@@ -162,9 +162,9 @@ func (x *NewTask) GetNote() string {
 type UpdateTask struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Note          string                 `protobuf:"bytes,3,opt,name=note,proto3" json:"note,omitempty"`
-	Completed     int32                  `protobuf:"varint,4,opt,name=completed,proto3" json:"completed,omitempty"`
+	Title         *string                `protobuf:"bytes,2,opt,name=title,proto3,oneof" json:"title,omitempty"`
+	Note          *string                `protobuf:"bytes,3,opt,name=note,proto3,oneof" json:"note,omitempty"`
+	Completed     *int32                 `protobuf:"varint,4,opt,name=completed,proto3,oneof" json:"completed,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -207,22 +207,22 @@ func (x *UpdateTask) GetId() uint64 {
 }
 
 func (x *UpdateTask) GetTitle() string {
-	if x != nil {
-		return x.Title
+	if x != nil && x.Title != nil {
+		return *x.Title
 	}
 	return ""
 }
 
 func (x *UpdateTask) GetNote() string {
-	if x != nil {
-		return x.Note
+	if x != nil && x.Note != nil {
+		return *x.Note
 	}
 	return ""
 }
 
 func (x *UpdateTask) GetCompleted() int32 {
-	if x != nil {
-		return x.Completed
+	if x != nil && x.Completed != nil {
+		return *x.Completed
 	}
 	return 0
 }
@@ -464,13 +464,17 @@ const file_todo_proto_rawDesc = "" +
 	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"3\n" +
 	"\aNewTask\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x12\n" +
-	"\x04note\x18\x02 \x01(\tR\x04note\"d\n" +
+	"\x04note\x18\x02 \x01(\tR\x04note\"\x94\x01\n" +
 	"\n" +
 	"UpdateTask\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
-	"\x04note\x18\x03 \x01(\tR\x04note\x12\x1c\n" +
-	"\tcompleted\x18\x04 \x01(\x05R\tcompleted\",\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x19\n" +
+	"\x05title\x18\x02 \x01(\tH\x00R\x05title\x88\x01\x01\x12\x17\n" +
+	"\x04note\x18\x03 \x01(\tH\x01R\x04note\x88\x01\x01\x12!\n" +
+	"\tcompleted\x18\x04 \x01(\x05H\x02R\tcompleted\x88\x01\x01B\b\n" +
+	"\x06_titleB\a\n" +
+	"\x05_noteB\f\n" +
+	"\n" +
+	"_completed\",\n" +
 	"\bTaskList\x12 \n" +
 	"\x05tasks\x18\x01 \x03(\v2\n" +
 	".task.TaskR\x05tasks\"\x18\n" +
@@ -544,6 +548,7 @@ func file_todo_proto_init() {
 	if File_todo_proto != nil {
 		return
 	}
+	file_todo_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
