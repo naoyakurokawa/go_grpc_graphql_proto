@@ -25,7 +25,7 @@ const (
 
 type Task struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Note          string                 `protobuf:"bytes,3,opt,name=note,proto3" json:"note,omitempty"`
 	Completed     int32                  `protobuf:"varint,4,opt,name=completed,proto3" json:"completed,omitempty"`
@@ -65,11 +65,11 @@ func (*Task) Descriptor() ([]byte, []int) {
 	return file_todo_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Task) GetId() string {
+func (x *Task) GetId() uint64 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *Task) GetTitle() string {
@@ -161,7 +161,7 @@ func (x *NewTask) GetNote() string {
 
 type UpdateTask struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Note          string                 `protobuf:"bytes,3,opt,name=note,proto3" json:"note,omitempty"`
 	Completed     int32                  `protobuf:"varint,4,opt,name=completed,proto3" json:"completed,omitempty"`
@@ -199,11 +199,11 @@ func (*UpdateTask) Descriptor() ([]byte, []int) {
 	return file_todo_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UpdateTask) GetId() string {
+func (x *UpdateTask) GetId() uint64 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *UpdateTask) GetTitle() string {
@@ -273,7 +273,7 @@ func (x *TaskList) GetTasks() []*Task {
 
 type TaskId struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -308,11 +308,11 @@ func (*TaskId) Descriptor() ([]byte, []int) {
 	return file_todo_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *TaskId) GetId() string {
+func (x *TaskId) GetId() uint64 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 type CreateTaskRequest struct {
@@ -454,7 +454,7 @@ const file_todo_proto_rawDesc = "" +
 	"\n" +
 	"todo.proto\x12\x04task\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xd4\x01\n" +
 	"\x04Task\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
 	"\x04note\x18\x03 \x01(\tR\x04note\x12\x1c\n" +
 	"\tcompleted\x18\x04 \x01(\x05R\tcompleted\x129\n" +
@@ -467,7 +467,7 @@ const file_todo_proto_rawDesc = "" +
 	"\x04note\x18\x02 \x01(\tR\x04note\"d\n" +
 	"\n" +
 	"UpdateTask\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
 	"\x04note\x18\x03 \x01(\tR\x04note\x12\x1c\n" +
 	"\tcompleted\x18\x04 \x01(\x05R\tcompleted\",\n" +
@@ -475,7 +475,7 @@ const file_todo_proto_rawDesc = "" +
 	"\x05tasks\x18\x01 \x03(\v2\n" +
 	".task.TaskR\x05tasks\"\x18\n" +
 	"\x06TaskId\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"8\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\"8\n" +
 	"\x11CreateTaskRequest\x12#\n" +
 	"\x05input\x18\x01 \x01(\v2\r.task.NewTaskR\x05input\";\n" +
 	"\x11UpdateTaskRequest\x12&\n" +

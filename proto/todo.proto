@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 message Task {
-  string id = 1;
+  uint64 id = 1;
   string title = 2;
   string note = 3;
   int32 completed = 4;
@@ -22,7 +22,7 @@ message NewTask {
 }
 
 message UpdateTask {
-  string id = 1;
+  uint64 id = 1;
   string title = 2;
   string note = 3;
   int32 completed = 4;
@@ -33,7 +33,7 @@ message TaskList {
 }
 
 message TaskId {
-  string id = 1;
+  uint64 id = 1;
 }
 
 message CreateTaskRequest {
